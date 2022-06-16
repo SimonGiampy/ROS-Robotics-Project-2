@@ -5,7 +5,7 @@ find_package(catkin REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  tf
+  tf2_ros
 )
 
 catkin_package(
@@ -18,10 +18,9 @@ include_directories(
 )
 
 add_executable(odom_tf2
-  src/odom_tf2.cpp
+  src/odometry.cpp
 )
-add_dependencies(odom_tf ${${project2}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(odom_tf2 ${${project2}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(odom_tf2
   ${catkin_LIBRARIES}
 )
-
