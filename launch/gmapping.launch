@@ -14,6 +14,8 @@
 
     <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(find project2)/bags/robotics1_final.bag"/>
 
+    <node pkg="project2" type="odom_tf2" respawn="false" name="odom_tf2" output="screen"/>
+
     <!--  **************** Visualisation ****************  -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project2)/rviz/map_cfg.rviz"/>
 </launch>

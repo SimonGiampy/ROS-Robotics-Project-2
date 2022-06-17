@@ -19,8 +19,6 @@
 
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_scan" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link scan_multi 100" />
 
-    <node pkg="tf" type="static_transform_publisher" name="odom_to_baselink" args="0.0 0.0 0.0 0.0 0.0 0.0 odom base_footprint 100" />
 
-    <node pkg="tf" type="static_transform_publisher" name="foot_to_baselink" args="0.0 0.0 0.0 0.0 0.0 0.0 base_footprint base_link 100" />
 
 </launch>

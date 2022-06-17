@@ -18,7 +18,7 @@ include_directories(
 )
 
 add_executable(odom_tf2
-  src/odometry.cpp
+  src/odom_tf2.cpp
 )
 add_dependencies(odom_tf2 ${${project2}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(odom_tf2
