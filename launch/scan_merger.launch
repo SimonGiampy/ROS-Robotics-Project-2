@@ -19,6 +19,6 @@
 
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_scan" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link scan_multi 100" />
 
-
+    
 
 </launch>

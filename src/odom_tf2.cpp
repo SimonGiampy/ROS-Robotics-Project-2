@@ -8,19 +8,17 @@ class odom_tf2 {
 private:
 
     ros::NodeHandle n;
-    ros::Subscriber sub1;
-    ros::Subscriber sub2;
+    ros::Subscriber sub;
     geometry_msgs::TransformStamped transformStamped;
     tf2_ros::TransformBroadcaster br;
 
 public:
 
     odom_tf2() {
-        sub1 = n.subscribe("/odom", 1, &odom_tf2::from_odom_to_footprint, this);
-        //sub2 = n.subscribe("/base_footprint", 1, &odom_tf2::from_footprint_to_link, this);
+        sub = n.subscribe("/odom", 1, &odom_tf2::from_odom_to_baselink, this);
     }
 
-    void from_odom_to_footprint(const nav_msgs::Odometry::ConstPtr& msg) {
+    void from_odom_to_baselink(const nav_msgs::Odometry::ConstPtr& msg) {
 
         transformStamped.header.stamp = ros::Time::now();
         transformStamped.header.frame_id = "odom";
