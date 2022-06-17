@@ -1,7 +1,7 @@
 <launch>
 
-    <arg name="odom_frame_id"   default="odom"/>
-    <arg name="global_frame_id" default="map"/>
+    <!--<arg name="odom_frame_id"   default="odom"/>-->
+    <!--<arg name="global_frame_id" default="map"/>-->
 
     <param name="/use_sim_time" value="true"/>
 
@@ -12,9 +12,8 @@
     <!-- Laser scan merger -->
     <include file="$(find project2)/launch/scan_merger.launch"/>
 
-    <!-- Static transform for base link odometry -->
-    <!--<node pkg="project2" type="odom_tf2" respawn="false" name="odometry" output="screen"/>-->
+    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(find project2)/bags/robotics1_final.bag"/>
 
     <!--  **************** Visualisation ****************  -->
-    <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find nav2d_conf)/rviz/robot_navigation.rviz"/>-->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project2)/rviz/map_cfg.rviz"/>
 </launch>
