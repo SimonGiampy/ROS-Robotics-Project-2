@@ -9,8 +9,8 @@
         <param name="angle_max" value="3.14"/>
         <param name="angle_increment" value="0.0058"/>
         <param name="scan_time" value="0.0333333"/>
-        <param name="range_min" value="0.50"/>
-        <param name="range_max" value="50.0"/>
+        <param name="range_min" value="0.2"/>
+        <param name="range_max" value="16.0"/>
     </node>
 
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_front" args="0.35 0.0 0.0 0.0 0.0 0.5150318 0.8571673 base_link laser_front 100" />
@@ -19,6 +19,6 @@
 
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_scan" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link scan_multi 100" />
 
-    
+
 
 </launch>

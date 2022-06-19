@@ -1,19 +1,16 @@
 <launch>
 
-    <!--<arg name="odom_frame_id"   default="odom"/>-->
-    <!--<arg name="global_frame_id" default="map"/>-->
-
     <param name="/use_sim_time" value="true"/>
 
-
-    <!-- Gmapping -->
+    <!-- Gmapping configuration parameters -->
     <include file="$(find project2)/cfg/gmapping.xml"/>
 
     <!-- Laser scan merger -->
     <include file="$(find project2)/launch/scan_merger.launch"/>
 
-    <!-- automatically plays the first bag file -->
-    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(find project2)/bags/robotics1_final.bag"/>
+    <!-- automatically plays the bag file for data collection -->
+    <arg name ="bag_file" default="robotics1_final"/>
+    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(find project2)/bags/$(arg bag_file).bag"/>
 
     <!-- tf transform from odom to base link -->
     <node pkg="project2" type="odom_tf2" respawn="false" name="odom_tf2" output="screen"/>

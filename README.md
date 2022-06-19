@@ -1,7 +1,9 @@
 # Polimi-Robotics-Project-2
 Second university project for robot navigation and localization using ROS middleware and data acquired with lidar and wheels encoders sensors
 
-rosrun map_server map_saver -f name_of_the_map
+commands:
+ - rosrun map_server map_saver -f name_of_the_map
+ - roslaunch project2 gmapping.launch bag_file:=robotics1_final
 
 
 # Robotics Project 2 - Academic Year 2021/2022
@@ -22,19 +24,19 @@ rosrun map_server map_saver -f name_of_the_map
 |Directory|File|Description|
 |---------------|---------|-----------|
 | /bags |  `robotics1_final.bag` | bag used for gmapping
-|  |  `robotics2_final.bag`| bag used for localization 
-|  |  `robotics3_final.bag`| bag used for localization 
-| /cfg | `amcl.xml` | configuration file for amcl localization 
-|  | `gmapping.xml` | configuration file for gmapping 
-| /launch | `amcl.launch` | launch file for amcl 
-|  | `gmapping.launch` | launch file for gmapping 
+|  |  `robotics2_final.bag`| bag used for localization
+|  |  `robotics3_final.bag`| bag used for localization
+| /cfg | `amcl.xml` | configuration file for amcl localization
+|  | `gmapping.xml` | configuration file for gmapping
+| /launch | `amcl.launch` | launch file for amcl
+|  | `gmapping.launch` | launch file for gmapping
 |  | `scan_merger.launch` | launch file used to merge the two laser scans, called by both amcl and gmapping
-| /maps | `map1.pgm` | the map built with gmapping 
-|  | `map1.yaml` | metadata of the map 
-| /rviz | `amcl_cfg.rviz` | rviz configuration file 
-| /rviz | `map_cfg.rviz` | rviz configuration file 
+| /maps | `map1.pgm` | the map built with gmapping
+|  | `map1.yaml` | metadata of the map
+| /rviz | `amcl_cfg.rviz` | rviz configuration file
+| /rviz | `map_cfg.rviz` | rviz configuration file
 | /src | `odomt_tf2.cpp` | node that subscribes to the `/odom` topic and transform it with __child_frame_id__ `base_link`
- 
+
 ## Service
 We used this command to obtain the .pgm file of the map once gmapping algorithm ended.
 
@@ -72,11 +74,10 @@ In order to start all the nodes type the following command:
 ```
 roslaunch project2 gmapping.launch
 ```
-## How to start amcl 
+## How to start amcl
 
 In order to start all the nodes type the following command:
 
 ```
 roslaunch project2 amcl.launch
 ```
-

@@ -2,10 +2,7 @@
 <launch>
 
     <!-- Name of the map to use and initial position -->
-    <arg name="map_file"       default="$(find project2)/maps/map1.yaml"/>
-    <arg name="initial_pose_x" default="0.0"/>
-    <arg name="initial_pose_y" default="0.0"/>
-    <arg name="initial_pose_a" default="0.0"/>
+    <arg name="map_file"       default="$(find project2)/maps/map11.yaml"/>
 
     <arg name="odom_frame_id"   default="odom"/>
     <arg name="global_frame_id" default="map"/>
@@ -20,21 +17,27 @@
     <!--  ****** amcl *****  -->
     <include file="$(find project2)/cfg/amcl.xml">
         <arg name="scan_topic" value="scan_multi"/>
-        <arg name="use_map_topic" value="true"/>
-        <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
-        <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
-        <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
     </include>
 
     <!-- Laser scan merger -->
     <include file="$(find project2)/launch/scan_merger.launch"/>
 
-    <!-- automatically plays the first bag file -->
-    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(find project2)/bags/robotics2_final.bag"/>
+    <!-- automatically plays the bag file for data collection -->
+    <arg name ="bag_file" default="robotics2_final"/>
+    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(find project2)/bags/$(arg bag_file).bag"/>
 
     <!-- tf transform from odom to base link -->
     <node pkg="project2" type="odom_tf2" respawn="false" name="odom_tf2" output="screen"/>
 
     <!--  **************** Visualisation ****************  -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project2)/rviz/amcl_cfg.rviz"/>
+
+
+    <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen" >
+        <param name="/target_frame_name" value="map" />
+        <param name="/source_frame_name" value="base_link" />
+        <param name="/trajectory_update_rate" value="1.0" />
+        <param name="/trajectory_publish_rate" value="1.0" />
+    </node>
+
 </launch>
