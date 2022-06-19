@@ -110,7 +110,7 @@ The following is the ros graph obtained with rqt graph tool :
 
 This is the obtained map: 
 <p align="center">
-  <img src="maps/map1.pgm" alt="map1" />
+  <img src="images/map1.png" alt="map1" />
   <br>
 </p>
 
