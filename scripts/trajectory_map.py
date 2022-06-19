@@ -5,11 +5,10 @@ import cv2
 from nav_msgs.msg import OccupancyGrid
 from geometry_msgs.msg import PoseWithCovarianceStamped
 from project2.srv import TrajectorySrv, TrajectorySrvResponse
-import os
+import rospkg
 
 class Trajectory:
 	def __init__(self):
-		self.cwd = os.getcwd()  #script path
 		rospy.Subscriber("/map", OccupancyGrid, self.callback_map)
 		rospy.Subscriber("/amcl_pose", PoseWithCovarianceStamped, self.callback_trajectory)
 		rospy.Service('trajectory', TrajectorySrv, self.write_map)
@@ -62,10 +61,11 @@ class Trajectory:
 			self.image[x_img][y_img-2] = 150
 
 	def write_map(self, msg):
-		filename = os.path.abspath('..') + '/maps/map_trajectory.png'
-		print ("Saving image with map and trajectory")
-		cv2.imwrite(filename, self.image)
-		return TrajectorySrvResponse(True)
+		rospack = rospkg.RosPack()
+		filename = rospack.get_path("project2") + '/maps/map_trajectory.png'
+		print ("Saving image with map and trajectory in " + filename)
+		result = cv2.imwrite(filename, self.image)
+		return TrajectorySrvResponse(result)
 
 
 if __name__ == '__main__':

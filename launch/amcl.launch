@@ -29,11 +29,11 @@
     <!-- tf transform from odom to base link -->
     <node pkg="project2" type="odom_tf2" respawn="false" name="odom_tf2" output="screen"/>
 
-    <!--  **************** Visualisation ****************  -->
+    <!--  **************** Visualization ****************  -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project2)/rviz/amcl_cfg.rviz"/>
 
-
-    <!--<node pkg="project2" name="Trajectory" type="trajectory_map.py" output="screen"/>-->
+    <!-- Prints on the map the trajectory followed by the robot, tracking the amcl_pose -->
+    <node pkg="project2" name="Trajectory" type="trajectory_map.py" output="screen"/>
 
 
 </launch>
