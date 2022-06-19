@@ -2,7 +2,7 @@
 <launch>
 
     <!-- Name of the map to use and initial position -->
-    <arg name="map_file"       default="$(find project2)/maps/map11.yaml"/>
+    <arg name="map_file"       default="$(find project2)/maps/map1.yaml"/>
 
     <arg name="odom_frame_id"   default="odom"/>
     <arg name="global_frame_id" default="map"/>
@@ -31,6 +31,9 @@
 
     <!--  **************** Visualisation ****************  -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project2)/rviz/amcl_cfg.rviz"/>
+
+
+    <!--<node pkg="project2" name="Trajectory" type="trajectory_map.py" output="screen"/>-->
 
 
 </launch>
