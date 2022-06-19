@@ -60,6 +60,7 @@ this is going to lauch the following nodes:
 - the __bag__ (the bag file name can be modified with the related parameter via terminal)
 - the cpp file __odom_tf2__
 - __rviz__ with its configuration
+- python script __trajectory_map.py__
 
 ## Map image Service
 We used this command to obtain the .pgm file of the __map__ once gmapping algorithm ended.
@@ -74,11 +75,7 @@ The script works like following:
 - subscribes to the `/amcl_pose` topic of Rviz and gets the __x__ and __y__ coordinates of the amcl algorithm while processing
 - for each of these position draws a symbol (__+__) on the image of the map. The image was not initially centered so we calculated some __scaling and traslation__ adjustments to make the position more accurate.
 
-While amcl is running, run the Python script:
-```
-rosrun project2 trajectory_map.py
-```
-then call the service:
+While amcl is running call the service:
 ```
 rosservice call trajectory
 ```
@@ -113,9 +110,5 @@ This is the obtained map:
   <img src="images/map1.png" alt="map1" />
   <br>
 </p>
-
-
-
-
 
 
