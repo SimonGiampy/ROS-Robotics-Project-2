@@ -7,7 +7,7 @@
         <param name="base_frame" value="$(arg base_frame)"/>
         <param name="odom_frame" value="$(arg odom_frame)"/>
         <param name="map_update_interval" value="1.0"/> <!-- default 5 -->
-        <param name="maxUrange" value="15.0"/> <!-- default = 15.0, maxRange was 15.5-->
+        <param name="maxUrange" value="15.0"/> <!-- a little bit less than 16 m -->
         <param name="maxRange" value="16.0"/> <!-- from datasheet 16 m -->
         <param name="sigma" value="0.05"/>
         <param name="kernelSize" value="1"/>

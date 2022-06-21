@@ -20,7 +20,6 @@ public:
 
     void from_odom_to_baselink(const nav_msgs::Odometry::ConstPtr& msg) {
 
-        transformStamped.header.stamp = ros::Time::now();
         transformStamped.header.frame_id = "odom";
         transformStamped.child_frame_id = "base_link";
         // set x, y, z
@@ -32,8 +31,10 @@ public:
         transformStamped.transform.rotation.y = msg->pose.pose.orientation.y;
         transformStamped.transform.rotation.z = msg->pose.pose.orientation.z;
         transformStamped.transform.rotation.w = msg->pose.pose.orientation.w;
-        // send transform
+        // time stamp
+        transformStamped.header.stamp = ros::Time::now();
 
+        // send transform
         br.sendTransform(transformStamped);
     }
 

@@ -10,12 +10,13 @@
 
     <node pkg="amcl" type="amcl" name="amcl">
         <param name="use_map_topic"             value="$(arg use_map_topic)"/>
-        <!-- Publish scans from best pose at a max of 10 Hz -->
-        <param name="odom_model_type"           value="omni"/> <!-- instead of diff -->
+        <!-- instead of differential drive kinematics, apply omni-directional kinematics for more representative visualization -->
+        <param name="odom_model_type"           value="omni"/>
         <param name="odom_alpha5"               value="0.1"/>
+        <!-- Publish scans from best pose at a max of 10 Hz, even though it is limited by the CPU capabilities -->
         <param name="gui_publish_rate"          value="10.0"/>
         <param name="laser_max_beams"           value="60"/>
-        <param name="laser_max_range"           value="16.0"/> <!-- standard = 12.0-->
+        <param name="laser_max_range"           value="16.0"/> <!-- set to LIDAR max range, instead of default 12.0-->
         <param name="min_particles"             value="500"/>
         <param name="max_particles"             value="2000"/>
         <param name="kld_err"                   value="0.05"/>
